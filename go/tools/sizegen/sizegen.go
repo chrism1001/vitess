@@ -93,7 +93,7 @@ func newSizegen(mod *packages.Module, sizes types.Sizes) *sizegen {
 func isPod(tt types.Type) bool {
 	switch tt := tt.(type) {
 	case *types.Struct:
-		for i := 0; i < tt.NumFields(); i++ {
+		for i := range tt.NumFields() {
 			if !isPod(tt.Field(i).Type()) {
 				return false
 			}
@@ -252,7 +252,7 @@ func (sizegen *sizegen) sizeImplForStruct(name *types.TypeName, st *types.Struct
 
 	var stmt []jen.Code
 	var funcFlags codeFlag
-	for i := 0; i < st.NumFields(); i++ {
+	for i := range st.NumFields() {
 		field := st.Field(i)
 		fieldType := field.Type()
 		fieldName := jen.Id("cached").Dot(field.Name())
