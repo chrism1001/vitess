@@ -296,7 +296,7 @@ func (r *rewriteGen) rewriteAllStructFields(t types.Type, strct *types.Struct, s
 
 	*/
 	var output []jen.Code
-	for i := 0; i < strct.NumFields(); i++ {
+	for i := range strct.NumFields() {
 		field := strct.Field(i)
 		if types.Implements(field.Type(), spi.iface()) {
 			spi.addType(field.Type())

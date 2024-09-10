@@ -278,7 +278,7 @@ func (c *cowGen) visitStruct(t types.Type, strct *types.Struct, spi generatorSPI
 		fieldSetters = append(fieldSetters, kopy.Id("n")) // changed := n
 	}
 	var changedVariables []string
-	for i := 0; i < strct.NumFields(); i++ {
+	for i := range strct.NumFields() {
 		field := strct.Field(i).Name()
 		typ := strct.Field(i).Type()
 		changedVarName := "changed" + field
