@@ -109,7 +109,7 @@ func (cmp *Comparator) Bytes(a, b Bytes) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	for i := range len(a) {
+	for i := 0; i < len(a); i++ {
 		if a[i] != b[i] {
 			return false
 		}
@@ -127,7 +127,7 @@ func (cmp *Comparator) InterfaceSlice(a, b InterfaceSlice) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	for i := range len(a) {
+	for i := 0; i < len(a); i++ {
 		if !cmp.AST(a[i], b[i]) {
 			return false
 		}
@@ -151,7 +151,7 @@ func (cmp *Comparator) LeafSlice(a, b LeafSlice) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	for i := range len(a) {
+	for i := 0; i < len(a); i++ {
 		if !cmp.RefOfLeaf(a[i], b[i]) {
 			return false
 		}
@@ -259,7 +259,7 @@ func (cmp *Comparator) SliceOfAST(a, b []AST) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	for i := range len(a) {
+	for i := 0; i < len(a); i++ {
 		if !cmp.AST(a[i], b[i]) {
 			return false
 		}
@@ -272,7 +272,7 @@ func (cmp *Comparator) SliceOfInt(a, b []int) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	for i := range len(a) {
+	for i := 0; i < len(a); i++ {
 		if a[i] != b[i] {
 			return false
 		}
@@ -285,7 +285,7 @@ func (cmp *Comparator) SliceOfRefOfLeaf(a, b []*Leaf) bool {
 	if len(a) != len(b) {
 		return false
 	}
-	for i := range len(a) {
+	for i := 0; i < len(a); i++ {
 		if !cmp.RefOfLeaf(a[i], b[i]) {
 			return false
 		}

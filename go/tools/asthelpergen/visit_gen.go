@@ -220,7 +220,7 @@ func visitAllStructFields(strct *types.Struct, spi generatorSPI) []jen.Code {
 	output := []jen.Code{
 		visitIn(),
 	}
-	for i := 0; i < strct.NumFields(); i++ {
+	for i := range strct.NumFields() {
 		field := strct.Field(i)
 		if types.Implements(field.Type(), spi.iface()) {
 			spi.addType(field.Type())
